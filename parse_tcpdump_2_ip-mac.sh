@@ -1,0 +1,1 @@
+tcpdump -e -n -r siemens-almacenillo.pcapng | awk '{print $2,$10}{print $4,$12}' | sed -e '/^.\{2\}:.\{2\}:.\{2\}:.\{2\}:.\{2\}:.\{2\},\?\ [1234567890]*\./!d' | sort -u | awk -F "." '{print $1"."$2"."$3"."$4}' | awk -F "," '{print $1 $2}' | sort -u 
